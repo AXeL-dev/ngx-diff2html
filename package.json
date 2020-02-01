@@ -3,8 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --project=demo",
+    "build": "ng build ngx-diff2html",
+    "build:demo": "ng build demo",
+    "build:demo:github": "ng build demo --prod --base-href \"/ngx-diff2html/\"",
+    "deploy:demo:github": "ngh --dir=dist/demo",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -22,6 +25,7 @@
     "diff-match-patch": "^1.0.4",
     "diff2html": "^2.12.2",
     "ng-zorro-antd": "^8.5.2",
+    "path": "^0.12.7",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
