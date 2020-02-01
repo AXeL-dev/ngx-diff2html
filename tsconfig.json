@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-diff2html": [
+        "dist/ngx-diff2html"
+      ],
+      "ngx-diff2html/*": [
+        "dist/ngx-diff2html/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
