@@ -11,7 +11,7 @@ import en from '@angular/common/locales/en';
 registerLocaleData(en);
 
 import { AppComponent } from './app.component';
-import { NgxDiff2htmlModule } from 'projects/ngx-diff2html/src/public-api';
+import { NgxDiff2htmlModule } from 'ngx-diff2html';
 
 @NgModule({
   declarations: [

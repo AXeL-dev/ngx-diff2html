@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DiffStyle, DiffFormat } from 'ngx-diff2html/ngx-diff2html';
+import { DiffStyle, DiffFormat } from 'ngx-diff2html';
 
 @Component({
   selector: 'app-root',
