@@ -31,7 +31,6 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
     //console.log(changes);
     if (this.propHasChanged(changes.left) || this.propHasChanged(changes.right)) {
       this.getDiff();
-      this.diffChange.emit(this.diff);
     } else if (this.propHasChanged(changes.style) || this.propHasChanged(changes.format)) {
       this.refreshDiffHTML();
     }
@@ -44,6 +43,7 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   getDiff() {
     this.diff = this.diffService.getDiff(this.left, this.right, this.filename);
     this.refreshDiffHTML();
+    this.diffChange.emit(this.diff);
   }
 
   refreshDiffHTML() {
