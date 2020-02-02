@@ -57,6 +57,7 @@
             "assets": [
               "projects/demo/src/favicon.ico",
               "projects/demo/src/assets",
+              "projects/demo/src/.nojekyll",
               {
                 "glob": "**/*",
                 "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
