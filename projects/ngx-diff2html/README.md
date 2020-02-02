@@ -10,7 +10,7 @@ A simple text diff component for Angular, based on [diff-match-patch](https://gi
 
 [ngx-diff2html Demo](https://axel-dev.github.io/ngx-diff2html)
 
-## Installation
+## Installation
 
 ```
 npm install --save ngx-diff2html
