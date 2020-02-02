@@ -1,7 +1,7 @@
 # NgxDiff2html
 
 [![NPM version](https://img.shields.io/npm/v/ngx-diff2html)](https://www.npmjs.com/package/ngx-diff2html)
-[![Downloads](https://img.shields.io/npm/dt/ngx-diff2html)](https://npmjs.org/package/ngx-diff2html)
+[![Downloads](https://img.shields.io/npm/dt/ngx-diff2html)](https://www.npmjs.com/package/ngx-diff2html)
 [![License](https://img.shields.io/npm/l/ngx-diff2html)](LICENSE)
 
 A simple text diff component for Angular, based on [diff-match-patch](https://github.com/google/diff-match-patch) & [diff2html](https://github.com/rtfpessoa/diff2html).
@@ -66,6 +66,7 @@ npm install --save ngx-diff2html
 ## API
 
 - module: `NgxDiff2htmlModule`
+- service: `NgxDiff2htmlService`
 - component: `NgxDiff2htmlComponent`
 - selector: `ngx-diff2html`
 
@@ -75,7 +76,7 @@ npm install --save ngx-diff2html
 | -------------------- | ----------------- | ------------------------------------ | --------------------------
 | left                 | string            | Yes                                  | First text to be compared
 | right                | string            | Yes                                  | Second text to be compared
-| filename             | string            | Optional, default: `` (empty)        | Can be used to display a filename at the top of diff results.
+| filename             | string            | Optional, default: ` ` (empty)       | Can be used to display a filename at the top of diff results
 | format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
 | style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
 
@@ -83,7 +84,51 @@ npm install --save ngx-diff2html
 
 | Output               | Type              | Required                             | Description
 | -------------------- | ----------------- | ------------------------------------ | --------------------------
-| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
+| diffChange           | string            | Optional                             | Event fired when diff changes. Returns text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
+
+### Methods
+
+#### `NgxDiff2htmlService.getDiff(text1, text2, filename)`
+
+Get text diff between `text1` & `text2` in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff).
+
+Returns:
+- `string` diff
+
+#### `NgxDiff2htmlService.diffToHTML(diff, format, style)`
+
+Convert unified diff string to HTML using diff2html.
+
+Returns:
+- `string` HTML diff
+
+#### Example:
+
+```typescript
+import { Component } from '@angular/core';
+import { NgxDiff2htmlService } from 'ngx-diff2html';
+
+@Component({
+  selector: 'app-root',
+  template: `
+    <div [innerHtml]="diffHTML"></div>
+  `,
+  styles: [],
+  providers: [
+    NgxDiff2htmlService
+  ]
+})
+export class AppComponent {
+
+  diffHTML: string = null;
+
+  constructor(private diffService: NgxDiff2htmlService) {
+    const diff = this.diffService.getDiff('first text', 'second text');
+    this.diffHTML = this.diffService.diffToHTML(diff);
+  }
+
+}
+```
 
 ## Build
 
