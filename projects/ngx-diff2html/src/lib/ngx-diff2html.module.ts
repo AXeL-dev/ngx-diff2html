@@ -4,9 +4,13 @@ import { NgxDiff2htmlComponent } from './ngx-diff2html.component';
 
 
 @NgModule({
-  declarations: [NgxDiff2htmlComponent],
+  declarations: [
+    NgxDiff2htmlComponent
+  ],
   imports: [
   ],
-  exports: [NgxDiff2htmlComponent]
+  exports: [
+    NgxDiff2htmlComponent
+  ]
 })
 export class NgxDiff2htmlModule { }
