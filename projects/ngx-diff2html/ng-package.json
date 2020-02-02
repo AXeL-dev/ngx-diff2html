@@ -7,5 +7,9 @@
       "diff-match-patch": "diff-match-patch",
       "diff2html": "diff2html"
     }
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "diff-match-patch",
+    "diff2html"
+  ]
 }
