@@ -17,7 +17,8 @@
   "homepage": "https://axel-dev.github.io/ngx-diff2html",
   "dependencies": {
     "diff-match-patch": "^1.0.4",
-    "diff2html": "^2.12.2"
+    "diff2html": "^2.12.2",
+    "path": "^0.12.7"
   },
   "peerDependencies": {
     "@angular/common": "^8.2.14",

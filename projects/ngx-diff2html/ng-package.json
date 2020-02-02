@@ -5,11 +5,13 @@
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
       "diff-match-patch": "diff-match-patch",
-      "diff2html": "diff2html"
+      "diff2html": "diff2html",
+      "path": "path"
     }
   },
   "whitelistedNonPeerDependencies": [
     "diff-match-patch",
-    "diff2html"
+    "diff2html",
+    "path"
   ]
 }
