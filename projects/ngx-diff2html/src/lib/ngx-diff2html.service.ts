@@ -36,7 +36,7 @@ export class NgxDiff2htmlService {
     const unifiedDiff = lines.join("\n");
     // console.info(unifiedDiff);
 
-    const strInput = "--- " + filename + "\n+++ " + filename + "\n" + unifiedDiff;
+    const strInput = "--- " + filename + " \n+++ " + filename + " \n" + unifiedDiff;
     const diff = decodeURIComponent(strInput);
     // console.info(diff);
 
