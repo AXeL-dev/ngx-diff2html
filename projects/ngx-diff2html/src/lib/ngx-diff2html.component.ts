@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, ViewEncapsulation } from '@angular/core';
 import { NgxDiff2htmlService } from './ngx-diff2html.service';
+import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
 
 @Component({
   selector: 'ngx-diff2html',
@@ -14,8 +15,8 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   @Input() private left: string;
   @Input() private right: string;
   @Input() private filename: string = ' '; // cannot be null or empty
-  @Input() private format: 'side-by-side' | 'line-by-line' = 'line-by-line';
-  @Input() private style: 'word' | 'char' = 'word';
+  @Input() private format: DiffFormat = 'line-by-line';
+  @Input() private style: DiffStyle = 'word';
   private diff: string = null;
   diffHTML: string = null;
 
