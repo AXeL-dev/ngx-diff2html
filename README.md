@@ -46,11 +46,12 @@ npm install --save ngx-diff2html
 + @import "~diff2html/dist/diff2html.min.css";
 ```
 
-**3**. Add the following line to `polyfills.ts`:
+**3**. You may also need to add the following lines to `polyfills.ts`:
 
 ```diff
   // Add global to window, assigning the value of window itself.
 + (window as any).global = window;
++ (window as any).process = { env: { DEBUG: undefined } };
 ```
 
 **4**. Start using the component:

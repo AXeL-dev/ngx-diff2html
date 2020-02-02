@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --project=demo",
-    "build": "ng build ngx-diff2html",
+    "build": "ng build ngx-diff2html && npm run copy:readme",
+    "copy:readme": "cp README.md dist/ngx-diff2html/",
     "build:demo": "ng build demo",
     "build:demo:github": "ng build demo --prod --base-href \"/ngx-diff2html/\"",
     "deploy:demo:github": "ngh --dir=dist/demo",
