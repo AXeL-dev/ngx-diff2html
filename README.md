@@ -76,7 +76,7 @@ npm install --save ngx-diff2html
 | -------------------- | ----------------- | ------------------------------------ | --------------------------
 | left                 | string            | Yes                                  | First text to be compared
 | right                | string            | Yes                                  | Second text to be compared
-| filename             | string            | Optional, default: ` ` (empty)       | Can be used to display a filename at the top of diff results
+| filename             | string            | Optional, default: '' (empty)        | Can be used to display a filename at the top of diff results
 | format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
 | style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
 
@@ -110,9 +110,7 @@ import { NgxDiff2htmlService } from 'ngx-diff2html';
 
 @Component({
   selector: 'app-root',
-  template: `
-    <div [innerHtml]="diffHTML"></div>
-  `,
+  template: `<div [innerHtml]="diffHTML"></div>`,
   styles: [],
   providers: [
     NgxDiff2htmlService
