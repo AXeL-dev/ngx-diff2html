@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { NgxDiff2htmlService } from './ngx-diff2html.service';
 import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
 
@@ -17,6 +17,7 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   @Input() private filename: string = ' '; // cannot be null or empty
   @Input() private format: DiffFormat = 'line-by-line';
   @Input() private style: DiffStyle = 'word';
+  @Output() diffChange: EventEmitter<string> = new EventEmitter();
   private diff: string = null;
   diffHTML: string = null;
 
@@ -30,6 +31,7 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
     //console.log(changes);
     if (this.propHasChanged(changes.left) || this.propHasChanged(changes.right)) {
       this.getDiff();
+      this.diffChange.emit(this.diff);
     } else if (this.propHasChanged(changes.style) || this.propHasChanged(changes.format)) {
       this.refreshDiffHTML();
     }
