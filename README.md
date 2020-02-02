@@ -1,5 +1,9 @@
 # NgxDiff2html
 
+[![NPM version](https://img.shields.io/npm/v/ngx-diff2html)](https://www.npmjs.com/package/ngx-diff2html)
+[![Downloads](https://img.shields.io/npm/dt/ngx-diff2html)](https://npmjs.org/package/ngx-diff2html)
+[![License](https://img.shields.io/npm/l/ngx-diff2html)](LICENSE)
+
 A simple text diff component for Angular, based on [diff-match-patch](https://github.com/google/diff-match-patch) & [diff2html](https://github.com/rtfpessoa/diff2html).
 
 ## Demo
@@ -36,7 +40,7 @@ npm install --save ngx-diff2html
 
 ## Usage
 
-1) Register the `NgxDiff2htmlModule` in a module, for example app module:
+**1**. Register the `NgxDiff2htmlModule` in a module, for example app module:
 
 ```diff
   import { BrowserModule } from '@angular/platform-browser';
@@ -57,20 +61,20 @@ npm install --save ngx-diff2html
   export class AppModule {}
 ```
 
-2) Add the following line to `polyfills.ts`:
+**2**. Add the following line to `polyfills.ts`:
 
 ```diff
   // Add global to window, assigning the value of window itself.
 + (window as any).global = window;
 ```
 
-3) Start using the component:
+**3**. Start using the component:
 
 ```
 <ngx-diff2html
   left="some text"
   right="some other text"
-/>
+></ngx-diff2html>
 ```
 
 ## Build
