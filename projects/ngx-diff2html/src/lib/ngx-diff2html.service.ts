@@ -10,7 +10,7 @@ export class NgxDiff2htmlService {
 
   constructor() { }
 
-  getDiff(text1: string, text2: string, filename: string) {
+  getDiff(text1: string, text2: string, filename: string = '') {
     // Get diff
     const dmp = new diff_match_patch();
     const chars = dmp.diff_linesToChars_(text1, text2);
@@ -44,7 +44,7 @@ export class NgxDiff2htmlService {
     return diff;
   }
 
-  diffToHTML(diff: string, format: DiffFormat, style: DiffStyle) {
+  diffToHTML(diff: string, format: DiffFormat = 'line-by-line', style: DiffStyle = 'word') {
     return Diff2Html.getPrettyHtml(diff, {
       inputFormat: 'diff',
       matching: 'lines',
