@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DiffStyle, DiffFormat } from 'ngx-diff2html/ngx-diff2html';
 
 @Component({
   selector: 'app-root',
@@ -20,8 +21,8 @@ export class AppComponent {
       "car3": "Fiat"
     }
   }`;
-  diffStyle: 'word' | 'char' = 'word';
-  outputFormat: 'side-by-side' | 'line-by-line' = 'line-by-line';
+  diffStyle: DiffStyle = 'word';
+  outputFormat: DiffFormat = 'line-by-line';
 
   onDiffChange(diff: string) {
     console.log(diff);
