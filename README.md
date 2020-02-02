@@ -1,27 +1,74 @@
 # NgxDiff2html
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
+A simple text diff component for Angular, based on [diff-match-patch](https://github.com/google/diff-match-patch) & [diff2html](https://github.com/rtfpessoa/diff2html).
 
-## Development server
+## Demo
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[ngx-diff2html Demo](#)
 
-## Code scaffolding
+## Installation
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+npm install --save ngx-diff2html
+```
 
-## Build
+## API
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- module: `NgxDiff2htmlModule`
+- component: `NgxDiff2htmlComponent`
+- selector: `ngx-diff2html`
 
-## Running unit tests
+### Inputs
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+| Input                | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| left                 | string            | Yes                                  | First text to be compared
+| right                | string            | Yes                                  | Second text to be compared
+| filename             | string            | Optional, default: ` ` (white space) | Can be used to display a filename in the top of diff results. **Cannot be null or empty**
+| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> -`side-by-side`<br> -`line-by-line`
+| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> -`word`<br> -`char`
 
-## Running end-to-end tests
+### Outputs
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+| Output               | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
 
-## Further help
+## Usage
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+1) Register the `NgxDiff2htmlModule` in a module, for example app module:
+
+```diff
+  import { BrowserModule } from '@angular/platform-browser';
+  import { NgModule } from '@angular/core';
+
+  import { AppComponent } from './app.component';
++ import { NgxDiff2htmlModule } from 'ngx-diff2html';
+
+  @NgModule({
+    declarations: [AppComponent],
+    imports: [
+      BrowserModule,
++     NgxDiff2htmlModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule {}
+```
+
+2) Add the following line to `polyfills.ts`:
+
+```diff
+  // Add global to window, assigning the value of window itself.
++ (window as any).global = window;
+```
+
+3) Start using the component:
+
+```
+<ngx-diff2html
+  left="some text"
+  right="some other text"
+/>
+```
