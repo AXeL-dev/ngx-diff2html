@@ -16,28 +16,6 @@ A simple text diff component for Angular, based on [diff-match-patch](https://gi
 npm install --save ngx-diff2html
 ```
 
-## API
-
-- module: `NgxDiff2htmlModule`
-- component: `NgxDiff2htmlComponent`
-- selector: `ngx-diff2html`
-
-### Inputs
-
-| Input                | Type              | Required                             | Description
-| -------------------- | ----------------- | ------------------------------------ | --------------------------
-| left                 | string            | Yes                                  | First text to be compared
-| right                | string            | Yes                                  | Second text to be compared
-| filename             | string            | Optional, default: ` ` (white space) | Can be used to display a filename in the top of diff results. **Cannot be null or empty**
-| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
-| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
-
-### Outputs
-
-| Output               | Type              | Required                             | Description
-| -------------------- | ----------------- | ------------------------------------ | --------------------------
-| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
-
 ## Usage
 
 **1**. Register the `NgxDiff2htmlModule` in a module, for example app module:
@@ -70,12 +48,34 @@ npm install --save ngx-diff2html
 
 **3**. Start using the component:
 
-```
+```html
 <ngx-diff2html
   left="some text"
   right="some other text"
 ></ngx-diff2html>
 ```
+
+## API
+
+- module: `NgxDiff2htmlModule`
+- component: `NgxDiff2htmlComponent`
+- selector: `ngx-diff2html`
+
+### Inputs
+
+| Input                | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| left                 | string            | Yes                                  | First text to be compared
+| right                | string            | Yes                                  | Second text to be compared
+| filename             | string            | Optional, default: ` ` (white space) | Can be used to display a filename in the top of diff results. **Cannot be null or empty**
+| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
+| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
+
+### Outputs
+
+| Output               | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
 
 ## Build
 
