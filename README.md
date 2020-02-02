@@ -72,3 +72,7 @@ npm install --save ngx-diff2html
   right="some other text"
 />
 ```
+
+## License
+
+This project is licensed under the [MIT](LICENSE) license.
