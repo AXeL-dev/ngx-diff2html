@@ -22,4 +22,8 @@ export class AppComponent {
   }`;
   diffStyle: 'word' | 'char' = 'word';
   outputFormat: 'side-by-side' | 'line-by-line' = 'line-by-line';
+
+  onDiffChange(diff: string) {
+    console.log(diff);
+  }
 }

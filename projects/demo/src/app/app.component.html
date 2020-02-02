@@ -31,7 +31,13 @@
           </nz-radio-group>
         </div>
       </div>
-      <ngx-diff2html [left]="leftContent" [right]="rightContent" [format]="outputFormat" [style]="diffStyle" ></ngx-diff2html>
+      <ngx-diff2html
+        [left]="leftContent"
+        [right]="rightContent"
+        [format]="outputFormat"
+        [style]="diffStyle"
+        (diffChange)="onDiffChange($event)"
+      ></ngx-diff2html>
     </div>
   </nz-content>
   <nz-footer>Made with <span class="heart">♥️</span> by <a href="https://github.com/AXeL-dev" target="_blank">AXeL</a></nz-footer>
