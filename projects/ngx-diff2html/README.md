@@ -1,11 +1,77 @@
 # NgxDiff2html
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.14.
+A simple text diff component for Angular, based on [diff-match-patch](https://github.com/google/diff-match-patch) & [diff2html](https://github.com/rtfpessoa/diff2html).
 
-## Code scaffolding
+## Demo
 
-Run `ng generate component component-name --project ngx-diff2html` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project ngx-diff2html`.
-> Note: Don't forget to add `--project ngx-diff2html` or else it will be added to the default project in your `angular.json` file. 
+[ngx-diff2html Demo](https://axel-dev.github.io/ngx-diff2html)
+
+## Installation
+
+```
+npm install --save ngx-diff2html
+```
+
+## API
+
+- module: `NgxDiff2htmlModule`
+- component: `NgxDiff2htmlComponent`
+- selector: `ngx-diff2html`
+
+### Inputs
+
+| Input                | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| left                 | string            | Yes                                  | First text to be compared
+| right                | string            | Yes                                  | Second text to be compared
+| filename             | string            | Optional, default: ` ` (white space) | Can be used to display a filename in the top of diff results. **Cannot be null or empty**
+| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
+| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
+
+### Outputs
+
+| Output               | Type              | Required                             | Description
+| -------------------- | ----------------- | ------------------------------------ | --------------------------
+| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
+
+## Usage
+
+1) Register the `NgxDiff2htmlModule` in a module, for example app module:
+
+```diff
+  import { BrowserModule } from '@angular/platform-browser';
+  import { NgModule } from '@angular/core';
+
+  import { AppComponent } from './app.component';
++ import { NgxDiff2htmlModule } from 'ngx-diff2html';
+
+  @NgModule({
+    declarations: [AppComponent],
+    imports: [
+      BrowserModule,
++     NgxDiff2htmlModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
+  })
+  export class AppModule {}
+```
+
+2) Add the following line to `polyfills.ts`:
+
+```diff
+  // Add global to window, assigning the value of window itself.
++ (window as any).global = window;
+```
+
+3) Start using the component:
+
+```
+<ngx-diff2html
+  left="some text"
+  right="some other text"
+/>
+```
 
 ## Build
 
@@ -15,10 +81,6 @@ Run `ng build ngx-diff2html` to build the project. The build artifacts will be s
 
 After building your library with `ng build ngx-diff2html`, go to the dist folder `cd dist/ngx-diff2html` and run `npm publish`.
 
-## Running unit tests
+## License
 
-Run `ng test ngx-diff2html` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+This project is licensed under the [MIT](LICENSE) license.

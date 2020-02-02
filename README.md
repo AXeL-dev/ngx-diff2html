@@ -4,7 +4,7 @@ A simple text diff component for Angular, based on [diff-match-patch](https://gi
 
 ## Demo
 
-[ngx-diff2html Demo](#)
+[ngx-diff2html Demo](https://axel-dev.github.io/ngx-diff2html)
 
 ## Installation
 
@@ -25,14 +25,14 @@ npm install --save ngx-diff2html
 | left                 | string            | Yes                                  | First text to be compared
 | right                | string            | Yes                                  | Second text to be compared
 | filename             | string            | Optional, default: ` ` (white space) | Can be used to display a filename in the top of diff results. **Cannot be null or empty**
-| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> -`side-by-side`<br> -`line-by-line`
-| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> -`word`<br> -`char`
+| format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
+| style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
 
 ### Outputs
 
 | Output               | Type              | Required                             | Description
 | -------------------- | ----------------- | ------------------------------------ | --------------------------
-| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
+| diffChange           | string            | Optional                             | Event fired when diff changes. The returned value is the text diff in [unified format](http://fileformats.archiveteam.org/wiki/Unified_diff)
 
 ## Usage
 
@@ -72,6 +72,14 @@ npm install --save ngx-diff2html
   right="some other text"
 />
 ```
+
+## Build
+
+Run `ng build ngx-diff2html` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Publishing
+
+After building your library with `ng build ngx-diff2html`, go to the dist folder `cd dist/ngx-diff2html` and run `npm publish`.
 
 ## License
 
