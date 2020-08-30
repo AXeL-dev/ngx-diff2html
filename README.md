@@ -3,6 +3,7 @@
 [![NPM version](https://img.shields.io/npm/v/ngx-diff2html)](https://www.npmjs.com/package/ngx-diff2html)
 [![Downloads](https://img.shields.io/npm/dt/ngx-diff2html)](https://www.npmjs.com/package/ngx-diff2html)
 [![License](https://img.shields.io/npm/l/ngx-diff2html)](LICENSE)
+[![Donate](https://img.shields.io/badge/PayPal-Donate-gray.svg?style=flat&logo=paypal&colorA=0071bb&logoColor=fff)](https://www.paypal.me/axeldev)
 
 A simple text diff component for Angular, based on [diff-match-patch](https://github.com/google/diff-match-patch) & [diff2html](https://github.com/rtfpessoa/diff2html).
 
