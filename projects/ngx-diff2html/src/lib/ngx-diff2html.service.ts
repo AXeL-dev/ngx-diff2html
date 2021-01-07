@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { diff_match_patch } from 'diff-match-patch';
-import { Diff2Html } from 'diff2html';
+import * as Diff2Html from 'diff2html';
 import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
 
 @Injectable({
@@ -45,8 +45,8 @@ export class NgxDiff2htmlService {
   }
 
   diffToHTML(diff: string, format: DiffFormat = 'line-by-line', style: DiffStyle = 'word') {
-    return Diff2Html.getPrettyHtml(diff, {
-      inputFormat: 'diff',
+    return Diff2Html.html(diff, {
+      drawFileList: false,
       matching: 'lines',
       outputFormat: format,
       diffStyle: style

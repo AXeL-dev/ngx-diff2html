@@ -44,7 +44,7 @@ npm install --save ngx-diff2html
 
 ```diff
   /* You can add global styles to this file, and also import other style files */
-+ @import "~diff2html/dist/diff2html.min.css";
++ @import "~diff2html/bundles/css/diff2html.min.css";
 ```
 
 **3**. You may also need to add the following lines to `polyfills.ts`:
