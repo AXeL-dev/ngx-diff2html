@@ -5,7 +5,7 @@ import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
 @Component({
   selector: 'ngx-diff2html',
   template: `
-    <div [innerHtml]="diffHTML"></div>
+    <div [innerHtml]="diffHTML | safe:'html'"></div>
   `,
   styles: []
 })

@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { NgxDiff2htmlComponent } from './ngx-diff2html.component';
+import { SafePipe } from '../pipes/safe.pipe';
 
 
 
 @NgModule({
   declarations: [
-    NgxDiff2htmlComponent
+    NgxDiff2htmlComponent,
+    SafePipe
   ],
   imports: [
   ],
