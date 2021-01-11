@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DiffStyle, DiffFormat } from 'ngx-diff2html';
+//import { DiffStyle, DiffFormat } from 'ngx-diff2html';
+import { DiffStyle, DiffFormat } from 'projects/ngx-diff2html/src/public-api';
 
 @Component({
   selector: 'app-root',

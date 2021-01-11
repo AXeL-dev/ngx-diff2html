@@ -16,7 +16,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           npm install
-          npm run build && npm run build:demo:github
+          npm run build:demo:github
           cp dist/demo/index.html dist/demo/404.html
 
       - name: Deploy 🚀
