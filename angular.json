@@ -146,6 +146,6 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-diff2html"
+    }
+  }
 }
