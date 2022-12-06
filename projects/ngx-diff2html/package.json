@@ -18,7 +18,8 @@
   "dependencies": {
     "diff-match-patch": "^1.0.4",
     "diff2html": "^3.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "tslib": "^2.0.0"
   },
   "peerDependencies": {
     "@angular/common": "^8.2.14",
