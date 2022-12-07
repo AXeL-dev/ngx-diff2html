@@ -1,42 +1,64 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
-import { NgxDiff2htmlService } from './ngx-diff2html.service';
-import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChange,
+  SimpleChanges,
+} from "@angular/core";
+import { DiffFormat, DiffStyle } from "./ngx-diff2html.model";
+
+import { NgxDiff2htmlService } from "./ngx-diff2html.service";
 
 @Component({
-  selector: 'ngx-diff2html',
-  template: `
-    <div [innerHtml]="diffHTML | safe:'html'"></div>
-  `,
-  styles: []
+  selector: "ngx-diff2html",
+  template: ` <div [innerHtml]="diffHTML | safe : 'html'"></div> `,
+  styles: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NgxDiff2htmlComponent implements OnInit, OnChanges {
-
-  @Input() private left: string;
-  @Input() private right: string;
-  @Input() private filename: string = '';
-  @Input() private format: DiffFormat = 'line-by-line';
-  @Input() private style: DiffStyle = 'word';
+  @Input() left: string;
+  @Input() right: string;
+  @Input() filename: string = "";
+  @Input() format: DiffFormat = "line-by-line";
+  @Input() style: DiffStyle = "word";
   @Output() diffChange: EventEmitter<string> = new EventEmitter();
   private diff: string = null;
   diffHTML: string = null;
 
-  constructor(private diffService: NgxDiff2htmlService) { }
+  constructor(
+    private diffService: NgxDiff2htmlService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.getDiff();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    //console.log(changes);
-    if (this.propHasChanged(changes.left) || this.propHasChanged(changes.right)) {
+    if (
+      this.propHasChanged(changes.left) ||
+      this.propHasChanged(changes.right)
+    ) {
       this.getDiff();
-    } else if (this.propHasChanged(changes.style) || this.propHasChanged(changes.format)) {
+    } else if (
+      this.propHasChanged(changes.style) ||
+      this.propHasChanged(changes.format)
+    ) {
       this.refreshDiffHTML();
     }
   }
 
   private propHasChanged(change: SimpleChange) {
-    return change && !change.isFirstChange() && change.currentValue !== change.previousValue;
+    return (
+      change &&
+      !change.isFirstChange() &&
+      change.currentValue !== change.previousValue
+    );
   }
 
   getDiff() {
@@ -46,7 +68,11 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   }
 
   refreshDiffHTML() {
-    this.diffHTML = this.diffService.diffToHTML(this.diff, this.format, this.style);
+    this.diffHTML = this.diffService.diffToHTML(
+      this.diff,
+      this.format,
+      this.style
+    );
+    this.cdr.markForCheck();
   }
-
 }

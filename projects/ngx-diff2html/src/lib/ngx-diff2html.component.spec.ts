@@ -1,25 +1,25 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from "@angular/core/testing";
 
-import { NgxDiff2htmlComponent } from './ngx-diff2html.component';
+import { NgxDiff2htmlComponent } from "./ngx-diff2html.component";
+import { SafePipe } from "../pipes/safe.pipe";
 
-describe('NgxDiff2htmlComponent', () => {
+describe("NgxDiff2htmlComponent", () => {
   let component: NgxDiff2htmlComponent;
   let fixture: ComponentFixture<NgxDiff2htmlComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NgxDiff2htmlComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      declarations: [NgxDiff2htmlComponent, SafePipe],
+    }).compileComponents();
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(NgxDiff2htmlComponent);
     component = fixture.componentInstance;
+    component.left = "test";
+    component.right = "test2";
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
