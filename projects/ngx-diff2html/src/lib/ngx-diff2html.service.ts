@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
-import { diff_match_patch } from 'diff-match-patch';
-import * as Diff2Html from 'diff2html';
-import { DiffFormat, DiffStyle } from './ngx-diff2html.model';
+import * as Diff2Html from "diff2html";
+
+import { DiffFormat, DiffStyle } from "./ngx-diff2html.model";
+
+import { Injectable } from "@angular/core";
+import { diff_match_patch } from "diff-match-patch";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class NgxDiff2htmlService {
+  constructor() {}
 
-  constructor() { }
-
-  getDiff(text1: string, text2: string, filename: string = '') {
+  getDiff(text1: string, text2: string, filename: string = "") {
     // Get diff
     const dmp = new diff_match_patch();
     const chars = dmp.diff_linesToChars_(text1, text2);
@@ -27,16 +28,17 @@ export class NgxDiff2htmlService {
     // ToDo: find a non tricky way to do this
     let lines = patchToText.split("\n");
     lines.forEach((line: string, index: number) => {
-      if (line.startsWith('-')) {
+      if (line.startsWith("-")) {
         lines[index] = line.replace(/%0A(.)/g, "%0A-$1");
-      } else if (line.startsWith('+')) {
+      } else if (line.startsWith("+")) {
         lines[index] = line.replace(/%0A(.)/g, "%0A+$1");
       }
     });
     const unifiedDiff = lines.join("\n");
     // console.info(unifiedDiff);
 
-    const strInput = "--- " + filename + " \n+++ " + filename + " \n" + unifiedDiff;
+    const strInput =
+      "--- " + filename + " \n+++ " + filename + " \n" + unifiedDiff;
     const diff = decodeURIComponent(strInput);
     // console.info(diff);
 
@@ -44,12 +46,16 @@ export class NgxDiff2htmlService {
     return diff;
   }
 
-  diffToHTML(diff: string, format: DiffFormat = 'line-by-line', style: DiffStyle = 'word') {
+  diffToHTML(
+    diff: string,
+    format: DiffFormat = "line-by-line",
+    style: DiffStyle = "word"
+  ) {
     return Diff2Html.html(diff, {
       drawFileList: false,
-      matching: 'lines',
+      matching: "lines",
       outputFormat: format,
-      diffStyle: style
+      diffStyle: style,
     });
   }
 }

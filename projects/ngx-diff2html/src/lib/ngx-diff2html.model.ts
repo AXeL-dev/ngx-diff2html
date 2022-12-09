@@ -1,4 +1,3 @@
+export type DiffFormat = "side-by-side" | "line-by-line";
 
-export type DiffFormat = 'side-by-side' | 'line-by-line';
-
-export type DiffStyle = 'word' | 'char';
+export type DiffStyle = "word" | "char";
