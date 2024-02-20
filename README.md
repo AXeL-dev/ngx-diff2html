@@ -80,6 +80,7 @@ npm install --save ngx-diff2html
 | filename             | string            | Optional, default: '' (empty)        | Can be used to display a filename at the top of diff results
 | format               | `DiffFormat`      | Optional, default: `side-by-side`    | Possible values:<br> - `side-by-side`<br> - `line-by-line`
 | style                | `DiffStyle`       | Optional, default: `word`            | Possible values:<br> - `word`<br> - `char`
+| showContext          | boolean           | Optional, default: `false`            | Enable to show context lines   
 
 ### Outputs
 

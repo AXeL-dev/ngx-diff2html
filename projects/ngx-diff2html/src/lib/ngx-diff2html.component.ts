@@ -16,6 +16,7 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   @Input() private filename: string = '';
   @Input() private format: DiffFormat = 'line-by-line';
   @Input() private style: DiffStyle = 'word';
+  @Input() private showContext: boolean = false;
   @Output() diffChange: EventEmitter<string> = new EventEmitter();
   private diff: string = null;
   diffHTML: string = null;
@@ -27,7 +28,6 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    //console.log(changes);
     if (this.propHasChanged(changes.left) || this.propHasChanged(changes.right)) {
       this.getDiff();
     } else if (this.propHasChanged(changes.style) || this.propHasChanged(changes.format)) {
@@ -40,7 +40,7 @@ export class NgxDiff2htmlComponent implements OnInit, OnChanges {
   }
 
   getDiff() {
-    this.diff = this.diffService.getDiff(this.left, this.right, this.filename);
+    this.diff = this.diffService.getDiff(this.left, this.right, this.filename, this.showContext);
     this.refreshDiffHTML();
     this.diffChange.emit(this.diff);
   }

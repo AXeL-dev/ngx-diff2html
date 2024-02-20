@@ -10,7 +10,7 @@ export class NgxDiff2htmlService {
 
   constructor() { }
 
-  getDiff(text1: string, text2: string, filename: string = '') {
+  getDiff(text1: string, text2: string, filename: string = '', showContext: boolean) {
     // Get diff
     const dmp = new diff_match_patch();
     const chars = dmp.diff_linesToChars_(text1, text2);
@@ -20,8 +20,12 @@ export class NgxDiff2htmlService {
     const diffs = dmp.diff_main(lineText1, lineText2, false);
     dmp.diff_charsToLines_(diffs, lineArray);
     const patchMake = dmp.patch_make(text1, diffs);
+
+    // Keep the context lines if showContext is set true.
+    if (showContext) {
+      patchMake[0].diffs = diffs;
+    }
     const patchToText = dmp.patch_toText(patchMake);
-    // console.info(patchToText);
 
     // Make it look more like a unified diff style
     // ToDo: find a non tricky way to do this
@@ -34,12 +38,9 @@ export class NgxDiff2htmlService {
       }
     });
     const unifiedDiff = lines.join("\n");
-    // console.info(unifiedDiff);
 
     const strInput = "--- " + filename + " \n+++ " + filename + " \n" + unifiedDiff;
     const diff = decodeURIComponent(strInput);
-    // console.info(diff);
-
     // Return diff
     return diff;
   }
